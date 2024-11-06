@@ -15,4 +15,14 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/asserts/meme.jpg
+    - lib/assets/meme.jpg
+    - lib/assets/gatito.jpg
+    - lib/assets/gatito2.jpg
+    - lib/assets/gatito3.jpg
+    - lib/assets/gatito4.jpg
+    - lib/assets/gatito5.jpg
+    - lib/assets/gatito6.jpg
+    - lib/assets/gatito7.jpg
+    - lib/assets/gatito8.jpg
+    - lib/assets/gatito9.jpg
+    - lib/assets/gatito10.jpg
