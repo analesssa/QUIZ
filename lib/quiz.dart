@@ -10,111 +10,126 @@ class _PaginaQuizState extends State<PaginaQuiz> {
   Map<String, int> pontuacoes = {}; // Armazenar pontuações por opção
 
   List<Map<String, dynamic>> perguntas = [
-    {
-      'asset': 'lib/assets/gatito.jpg',
-      'texto': 'O que é Flutter?',
-      'opcoes': {
-        'Uma linguagem de programação': 0,
-        'Um framework para desenvolvimento de aplicativos': 1,
-        'Um banco de dados': 0,
-        'Um sistema operacional': 0,
+
+        {
+        'asset':'lib/assets/gatito.jpg',
+        'texto': 'O que significa a expressão "out of the blue"?',
+        'opcoes': {
+          
+          'Bem devagarinho': 0,
+          'Do nada': 1,
+          'No céu claro': 0,
+          'Com muito barulho': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito2.jpg',
-      'texto':
-          'Qual linguagem de programação é usada para desenvolver aplicativos Flutter?',
-      'opcoes': {
-        'Java': 0,
-        'Dart': 1,
-        'Kotlin': 0,
-        'JavaScript': 0,
+        {
+
+        'asset':'lib/assets/gatito2.jpg',
+        'texto': 'O que significa a expressão "in a jiffy"?',
+        'opcoes': {
+
+          'Em um tempão': 0,
+          'De um jeito bem complicado': 0,
+          'Devagarinho': 0,
+          'Vapt Vupt': 1,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito3.jpg',
-      'texto': 'Qual widget é usado como contêiner básico em Flutter?',
-      'opcoes': {
-        'Column': 0,
-        'Row': 0,
-        'Container': 1,
-        'Scaffold': 0,
+          {
+        'asset':'lib/assets/gatito3.jpg',
+        'texto': 'O que significa a palavra "cuckold"?',
+        'opcoes': {
+
+          'Homem rico': 0,
+          'Preguiçoso': 0,
+          'Corno': 1,
+          'Homem folgado': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito4.jpg',
-      'texto': 'Qual comando é usado para iniciar um novo projeto Flutter?',
-      'opcoes': {
-        'flutter create nome_do_projeto': 1,
-        'flutter new nome_do_projeto': 0,
-        'flutter start nome_do_projeto': 0,
-        'flutter init nome_do_projeto': 0,
+          {
+        'asset':'lib/assets/gatito4.jpg',    
+        'texto': 'O que significa a expressão "gotta bail"?',
+        'opcoes': {
+
+          'Vou vazar': 1,
+          'Cancelar o rolê': 0,
+          'Ir pra cadeia': 0,
+          'Tomar uma decisão rápida': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito5.jpg',
-      'texto': 'Qual widget é usado para exibir uma lista de itens em Flutter?',
-      'opcoes': {
-        'Column': 0,
-        'ListView': 1,
-        'GridView': 0,
-        'Stack': 0,
+        {
+
+        'asset':'lib/assets/gatito5.jpg',  
+        'texto': 'O que significa a palavra "hellhole"?',
+        'opcoes': {
+
+          'Lar doce lar': 0,
+          'Muquifo': 1,
+          'Centro da cidade': 0,
+          'Uma caverna': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito6.jpg',
-      'texto':
-          'Qual comando é usado para compilar um aplicativo Flutter para a web?',
-      'opcoes': {
-        'flutter build web': 1,
-        'flutter web build': 0,
-        'flutter create web': 0,
-        'flutter deploy web': 0,
+        {
+
+        'asset':'lib/assets/gatito6.jpg',  
+        'texto': 'O que significa a expressão "walk on eggshells"?',
+        'opcoes': {
+    
+          'Andar descalço': 0,
+          'Pisar em ovos': 1,
+          'Bater perna': 0,
+          'Agir errado': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito7.jpg',
-      'texto': 'O que é o "Hot Reload" no Flutter?',
-      'opcoes': {
-        'Reiniciar o aplicativo': 0,
-        'Atualizar o estado do aplicativo sem perder os dados': 1,
-        'Instalar dependências': 0,
-        'Criar um novo projeto': 0,
+          {
+
+        'asset':'lib/assets/gatito7.jpg',    
+        'texto': 'O que significa a expressão "Bullshit"?',
+        'opcoes': {
+
+          'Papo furado': 1,
+          'Saco cheio': 0,
+          'Bala': 0,
+          'Bagunça': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito8.jpg',
-      'texto': 'Qual widget é usado para criar um botão em Flutter?',
-      'opcoes': {
-        'Button': 0,
-        'RaisedButton': 0,
-        'FlatButton': 0,
-        'ElevatedButton': 1,
+          {
+
+        'asset':'lib/assets/gatito8.jpg',
+        'texto': 'O que significa a expressão "Kiss ass" ?',
+        'opcoes': {
+          
+          'Cara de pau ': 0,
+          'Mentiroso': 0,
+          'Puxa saco': 1,
+          'Esquisito': 0,
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito9.jpg',
-      'texto':
-          'Qual biblioteca é comumente usada para gerenciar estados em aplicativos Flutter?',
-      'opcoes': {
-        'Provider': 1,
-        'Axios': 0,
-        'Redux': 0,
-        'Firebase': 0,
+          {
+
+        'asset':'lib/assets/gatito9.jpg',
+        'texto': 'O que quer dizer "white lie"?',
+        'opcoes': {
+
+          'Carta branca': 0,
+          'Mantra': 0,
+          'Marca de sabão': 0,
+          'Mentirinha': 1,
+
+        },
       },
-    },
-    {
-      'asset': 'lib/assets/gatito10.jpg',
-      'texto':
-          'Qual é a função principal de um arquivo `pubspec.yaml` em um projeto Flutter?',
-      'opcoes': {
-        'Definir a estrutura do aplicativo': 0,
-        'Gerenciar dependências e configurações do projeto': 1,
-        'Configurar a interface do usuário': 0,
-        'Especificar rotas do aplicativo': 0,
+          {
+
+        'asset':'lib/assets/gatito10.jpg',
+        'texto': 'Qual significado da expressão "Whinning"?',
+        'opcoes': {
+
+          'Enganar alguém': 0,
+          'Fazer mimimi': 1,
+          'Ganhar algo': 0,
+          'Passar a perna em alguém': 0,
+        },
       },
-    },
-  ];
+      ];
 
   void responder(String opcaoSelecionada) {
     // Adiciona ou atualiza a pontuação da opção selecionada

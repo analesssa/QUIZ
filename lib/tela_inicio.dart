@@ -14,7 +14,7 @@ class TelaInicial extends StatelessWidget {
           children: [
             // Título ou mensagem
             Text(
-              'Bem-vindo ao Quiz!',
+              'Comece sua jornada aqui! ',
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 20),
