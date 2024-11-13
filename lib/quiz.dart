@@ -7,154 +7,149 @@ class PaginaQuiz extends StatefulWidget {
 
 class _PaginaQuizState extends State<PaginaQuiz> {
   int indicePergunta = 0;
-  Map<String, int> pontuacoes = {}; // Armazenar pontuações por opção
+  List<double> escalasBotao = [];  // Lista para controlar a escala de cada botão
+  Map<String, int> pontuacoes = {  // Pontuação por temperamento
+    'sanguineo': 0,
+    'fleumatico': 0,
+    'melancolico': 0,
+    'colerico': 0,
+  };
 
   List<Map<String, dynamic>> perguntas = [
-
-        {
-        'asset':'lib/assets/gatito.jpg',
-        'texto': 'O que significa a expressão "out of the blue"?',
-        'opcoes': {
-          
-          'Bem devagarinho': 0,
-          'Do nada': 1,
-          'No céu claro': 0,
-          'Com muito barulho': 0,
-        },
+    {
+      'texto': 'Quando você está em um grupo de pessoas, você:',
+      'opcoes': {
+        'Gosta de ser o centro das atenções': 'sanguineo',
+        'Prefere observar e não falar muito': 'fleumatico',
+        'Fica pensando sobre as coisas que estão sendo ditas': 'melancolico',
+        'Toma a liderança naturalmente': 'colerico',
       },
-        {
-
-        'asset':'lib/assets/gatito2.jpg',
-        'texto': 'O que significa a expressão "in a jiffy"?',
-        'opcoes': {
-
-          'Em um tempão': 0,
-          'De um jeito bem complicado': 0,
-          'Devagarinho': 0,
-          'Vapt Vupt': 1,
-        },
+    },
+    {
+      'texto': 'Como você reage quando algo não sai como planejado?',
+      'opcoes': {
+        'Fica estressado e tenta controlar a situação': 'colerico',
+        'Fica triste e se isola para refletir': 'melancolico',
+        'Fica calmo e tenta encontrar uma solução': 'fleumatico',
+        'Fica frustrado, mas logo passa e tenta outro caminho': 'sanguineo',
       },
-          {
-        'asset':'lib/assets/gatito3.jpg',
-        'texto': 'O que significa a palavra "cuckold"?',
-        'opcoes': {
-
-          'Homem rico': 0,
-          'Preguiçoso': 0,
-          'Corno': 1,
-          'Homem folgado': 0,
-        },
+    },
+    {
+      'texto': 'Como você prefere passar seu tempo livre?',
+      'opcoes': {
+        'Socializando e se divertindo com amigos': 'sanguineo',
+        'Lendo ou refletindo sozinho': 'melancolico',
+        'Relaxando em casa, sem pressa': 'fleumatico',
+        'Realizando atividades desafiadoras e produtivas': 'colerico',
       },
-          {
-        'asset':'lib/assets/gatito4.jpg',    
-        'texto': 'O que significa a expressão "gotta bail"?',
-        'opcoes': {
-
-          'Vou vazar': 1,
-          'Cancelar o rolê': 0,
-          'Ir pra cadeia': 0,
-          'Tomar uma decisão rápida': 0,
-        },
+    },
+    {
+      'texto': 'Quando você tem que tomar uma decisão difícil, você:',
+      'opcoes': {
+        'Toma uma decisão rápida e segue em frente': 'colerico',
+        'Reflete muito antes de decidir': 'melancolico',
+        'Tenta ver os dois lados e opta pela solução mais calma': 'fleumatico',
+        'Busca o apoio dos outros para tomar a decisão': 'sanguineo',
       },
-        {
-
-        'asset':'lib/assets/gatito5.jpg',  
-        'texto': 'O que significa a palavra "hellhole"?',
-        'opcoes': {
-
-          'Lar doce lar': 0,
-          'Muquifo': 1,
-          'Centro da cidade': 0,
-          'Uma caverna': 0,
-        },
+    },
+    {
+      'texto': 'Você costuma ser:',
+      'opcoes': {
+        'Extrovertido e sempre disposto a conversar': 'sanguineo',
+        'Mais introvertido, preferindo ambientes tranquilos': 'fleumatico',
+        'Profundo e pensativo, gosta de analisar tudo': 'melancolico',
+        'Enérgico e focado, gosta de estar no controle': 'colerico',
       },
-        {
-
-        'asset':'lib/assets/gatito6.jpg',  
-        'texto': 'O que significa a expressão "walk on eggshells"?',
-        'opcoes': {
-    
-          'Andar descalço': 0,
-          'Pisar em ovos': 1,
-          'Bater perna': 0,
-          'Agir errado': 0,
-        },
+    },
+    {
+      'texto': 'Em uma discussão, você geralmente:',
+      'opcoes': {
+        'Fica calmo e tenta resolver a situação pacificamente': 'fleumatico',
+        'Fala com entusiasmo e tenta convencer os outros': 'sanguineo',
+        'Reflete profundamente sobre todos os pontos de vista': 'melancolico',
+        'Defende sua opinião de forma firme e assertiva': 'colerico',
       },
-          {
-
-        'asset':'lib/assets/gatito7.jpg',    
-        'texto': 'O que significa a expressão "Bullshit"?',
-        'opcoes': {
-
-          'Papo furado': 1,
-          'Saco cheio': 0,
-          'Bala': 0,
-          'Bagunça': 0,
-        },
+    },
+    {
+      'texto': 'Quando as coisas não estão indo bem, você:',
+      'opcoes': {
+        'Fica chateado, mas tenta manter a calma e esperar a situação melhorar': 'fleumatico',
+        'Fica emocionalmente envolvido e expressa seus sentimentos': 'sanguineo',
+        'Fica deprimido e começa a questionar tudo': 'melancolico',
+        'Fica irritado e procura uma solução imediata': 'colerico',
       },
-          {
-
-        'asset':'lib/assets/gatito8.jpg',
-        'texto': 'O que significa a expressão "Kiss ass" ?',
-        'opcoes': {
-          
-          'Cara de pau ': 0,
-          'Mentiroso': 0,
-          'Puxa saco': 1,
-          'Esquisito': 0,
-        },
+    },
+    {
+      'texto': 'Como você reage a críticas?',
+      'opcoes': {
+        'Aceita de forma construtiva e tenta melhorar': 'fleumatico',
+        'Fica animado para aprender com os outros': 'sanguineo',
+        'Fica pensativo e reflete profundamente sobre o que foi dito': 'melancolico',
+        'Fica defensivo e tenta justificar suas ações': 'colerico',
       },
-          {
-
-        'asset':'lib/assets/gatito9.jpg',
-        'texto': 'O que quer dizer "white lie"?',
-        'opcoes': {
-
-          'Carta branca': 0,
-          'Mantra': 0,
-          'Marca de sabão': 0,
-          'Mentirinha': 1,
-
-        },
+    },
+    {
+      'texto': 'Quando você conhece alguém novo, você:',
+      'opcoes': {
+        'Se sente à vontade e rapidamente começa a conversar': 'sanguineo',
+        'Fica mais tímido e prefere esperar para ver a reação da outra pessoa': 'fleumatico',
+        'Fica observando e analisando o comportamento da pessoa': 'melancolico',
+        'Toma a iniciativa e tenta impressionar a pessoa': 'colerico',
       },
-          {
-
-        'asset':'lib/assets/gatito10.jpg',
-        'texto': 'Qual significado da expressão "Whinning"?',
-        'opcoes': {
-
-          'Enganar alguém': 0,
-          'Fazer mimimi': 1,
-          'Ganhar algo': 0,
-          'Passar a perna em alguém': 0,
-        },
+    },
+    {
+      'texto': 'Quando você tem uma tarefa difícil, você:',
+      'opcoes': {
+        'Prefere fazer as coisas com calma, no seu próprio ritmo': 'fleumatico',
+        'Fica empolgado e enfrenta a tarefa com energia': 'sanguineo',
+        'Se preocupa muito com cada detalhe e busca a perfeição': 'melancolico',
+        'Enfrenta o desafio com determinação e foco': 'colerico',
       },
-      ];
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    escalasBotao = List.generate(perguntas[indicePergunta]['opcoes'].length, (index) => 1.0);
+  }
 
   void responder(String opcaoSelecionada) {
-    // Adiciona ou atualiza a pontuação da opção selecionada
-    pontuacoes[opcaoSelecionada] =
-        perguntas[indicePergunta]['opcoes'][opcaoSelecionada];
+    // Atualiza a pontuação para o temperamento correspondente à opção selecionada
+    setState(() {
+      pontuacoes[opcaoSelecionada] = pontuacoes[opcaoSelecionada]! + 1; // Incrementa a pontuação do temperamento
+    });
 
     if (indicePergunta + 1 < perguntas.length) {
       setState(() {
         indicePergunta++;
+        escalasBotao = List.generate(perguntas[indicePergunta]['opcoes'].length, (index) => 1.0); // Atualiza escalas ao mudar a pergunta
       });
     } else {
-      // Mostra o resultado final
-      mostrarResultados();
+      mostrarResultados(); // Quando o quiz termina, mostra o resultado
     }
   }
 
   void mostrarResultados() {
-    String resultado = 'Resultados:\n';
-    int pontuacaoFinal = 0;
-    pontuacoes.forEach((opcao, score) {
-      resultado += '$opcao: ${score == 1 ? "Correto" : "Incorreto"}\n';
-      pontuacaoFinal += score;
-    });
-    resultado += '\nPontuação final: $pontuacaoFinal/${perguntas.length}';
+    // Determina o temperamento com maior pontuação
+    String resultado = 'Seu temperamento predominante é:\n';
+    String temperamentoDominante = '';
 
+    int maiorPontuacao = pontuacoes.values.reduce((a, b) => a > b ? a : b);
+
+    if (pontuacoes['sanguineo'] == maiorPontuacao) {
+      temperamentoDominante = 'Sanguíneo';
+    } else if (pontuacoes['fleumatico'] == maiorPontuacao) {
+      temperamentoDominante = 'Fleumático';
+    } else if (pontuacoes['melancolico'] == maiorPontuacao) {
+      temperamentoDominante = 'Melancólico';
+    } else {
+      temperamentoDominante = 'Colérico';
+    }
+
+    resultado += temperamentoDominante;
+
+    // Exibe o resultado final
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -165,10 +160,23 @@ class _PaginaQuizState extends State<PaginaQuiz> {
             child: Text('Fechar'),
             onPressed: () {
               Navigator.of(ctx).pop();
+            },
+          ),
+          TextButton(
+            child: Text('Reiniciar Quiz'),
+            onPressed: () {
               setState(() {
-                indicePergunta = 0; // Reiniciar o quiz
-                pontuacoes.clear(); // Limpar as pontuações
+                // Reinicia as variáveis do quiz
+                indicePergunta = 0;
+                pontuacoes = {  // Zera as pontuações
+                  'sanguineo': 0,
+                  'fleumatico': 0,
+                  'melancolico': 0,
+                  'colerico': 0,
+                };
+                escalasBotao = List.generate(perguntas[indicePergunta]['opcoes'].length, (index) => 1.0); // Reseta as escalas
               });
+              Navigator.of(ctx).pop();
             },
           ),
         ],
@@ -179,41 +187,49 @@ class _PaginaQuizState extends State<PaginaQuiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Quiz')),
+      appBar: AppBar(title: Text('Quiz - Seu Temperamento')),
       body: SingleChildScrollView(
-          // Permite rolagem do conteúdo
-          child: Center(
-        child: Column(
-          children: [
-            // Usando a URL para a imagem
-            Image.asset(
-              perguntas[indicePergunta]['asset'] as String,
-              fit: BoxFit.fitHeight,
-              width: MediaQuery.of(context).size.width *
-                  0.9, // Ajusta a largura da imagem
-              height: MediaQuery.of(context).size.height *
-                  0.4, // Ajusta a altura da imagem
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                perguntas[indicePergunta]['texto'],
-                style: TextStyle(fontSize: 18),
-                textAlign: TextAlign.center, // Ajusta o alinhamento do texto
-              ),
-            ),
-            ...perguntas[indicePergunta]['opcoes'].keys.map((opcao) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: ElevatedButton(
-                  onPressed: () => responder(opcao),
-                  child: Text(opcao),
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  perguntas[indicePergunta]['texto'],
+                  style: TextStyle(fontSize: 18),
+                  textAlign: TextAlign.center,
                 ),
-              );
-            }).toList(),
-          ],
+              ),
+              // Gera os botões de resposta
+              ...perguntas[indicePergunta]['opcoes'].keys.map((opcao) {
+                int index = perguntas[indicePergunta]['opcoes'].keys.toList().indexOf(opcao);
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: MouseRegion(
+                    onEnter: (_) {
+                      setState(() {
+                        escalasBotao[index] = 1.1; // Aumenta a escala do botão específico
+                      });
+                    },
+                    onExit: (_) {
+                      setState(() {
+                        escalasBotao[index] = 1.0; // Restaura a escala para o tamanho normal
+                      });
+                    },
+                    child: Transform.scale(
+                      scale: escalasBotao[index], // Controla a escala do botão específico
+                      child: ElevatedButton(
+                        onPressed: () => responder(perguntas[indicePergunta]['opcoes'][opcao]),
+                        child: Text(opcao),
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
