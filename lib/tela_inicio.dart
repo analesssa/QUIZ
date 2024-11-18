@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/quiz.dart';
 
@@ -18,17 +17,25 @@ class _TelaInicialState extends State<TelaInicial> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start, 
+          crossAxisAlignment: CrossAxisAlignment.center, 
           children: [
+            // Imagem com ajuste de tamanho
+            Image.asset(
+              'lib/assets/imagemincial.jpg', 
+              width: 350, 
+              height: 350,
+              fit: BoxFit.contain,  
+            ),
+            SizedBox(height: 2), 
             // Título ou mensagem
             Text(
               'Comece sua jornada aqui!',
               style: TextStyle(fontSize: 24),
             ),
-            SizedBox(height: 20),
-            // Campo de texto para o nome
+            SizedBox(height: 2),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0), 
               child: TextField(
                 controller: _nomeController,
                 decoration: InputDecoration(
@@ -37,7 +44,7 @@ class _TelaInicialState extends State<TelaInicial> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 6), 
             // Botão para iniciar o quiz
             ElevatedButton(
               onPressed: () {
@@ -47,7 +54,8 @@ class _TelaInicialState extends State<TelaInicial> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PaginaQuiz()),
+                      builder: (context) => PaginaQuiz(),
+                    ),
                   );
                 } else {
                   // Exibe um alerta caso o nome não tenha sido preenchido

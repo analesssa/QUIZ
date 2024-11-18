@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/resultado.dart';  
 
 class PaginaQuiz extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
 
   List<Map<String, dynamic>> perguntas = [
     {
+      'asset':'lib/assets/pessoas01.jpg',
       'texto': 'Quando você está em um grupo de pessoas, você:',
       'opcoes': {
         'Gosta de ser o centro das atenções': 'sanguineo',
@@ -26,6 +28,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas02.jpg',
       'texto': 'Como você reage quando algo não sai como planejado?',
       'opcoes': {
         'Fica estressado e tenta controlar a situação': 'colerico',
@@ -35,6 +38,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas03.jpg',
       'texto': 'Como você prefere passar seu tempo livre?',
       'opcoes': {
         'Socializando e se divertindo com amigos': 'sanguineo',
@@ -44,6 +48,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas04.jpg',
       'texto': 'Quando você tem que tomar uma decisão difícil, você:',
       'opcoes': {
         'Toma uma decisão rápida e segue em frente': 'colerico',
@@ -53,6 +58,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas05.jpg',
       'texto': 'Você costuma ser:',
       'opcoes': {
         'Extrovertido e sempre disposto a conversar': 'sanguineo',
@@ -62,6 +68,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas06.jpg',
       'texto': 'Em uma discussão, você geralmente:',
       'opcoes': {
         'Fica calmo e tenta resolver a situação pacificamente': 'fleumatico',
@@ -71,6 +78,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas07.jpg',
       'texto': 'Quando as coisas não estão indo bem, você:',
       'opcoes': {
         'Fica chateado, mas tenta manter a calma e esperar a situação melhorar': 'fleumatico',
@@ -80,6 +88,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas08.jpg',
       'texto': 'Como você reage a críticas?',
       'opcoes': {
         'Aceita de forma construtiva e tenta melhorar': 'fleumatico',
@@ -89,6 +98,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas09.jpg',
       'texto': 'Quando você conhece alguém novo, você:',
       'opcoes': {
         'Se sente à vontade e rapidamente começa a conversar': 'sanguineo',
@@ -98,6 +108,7 @@ class _PaginaQuizState extends State<PaginaQuiz> {
       },
     },
     {
+      'asset':'lib/assets/pessoas10.jpg',
       'texto': 'Quando você tem uma tarefa difícil, você:',
       'opcoes': {
         'Prefere fazer as coisas com calma, no seu próprio ritmo': 'fleumatico',
@@ -115,71 +126,27 @@ class _PaginaQuizState extends State<PaginaQuiz> {
   }
 
   void responder(String opcaoSelecionada) {
-    // Atualiza a pontuação para o temperamento correspondente à opção selecionada
+    
     setState(() {
-      pontuacoes[opcaoSelecionada] = pontuacoes[opcaoSelecionada]! + 1; // Incrementa a pontuação do temperamento
+      pontuacoes[opcaoSelecionada] = pontuacoes[opcaoSelecionada]! + 1; 
     });
 
     if (indicePergunta + 1 < perguntas.length) {
       setState(() {
         indicePergunta++;
-        escalasBotao = List.generate(perguntas[indicePergunta]['opcoes'].length, (index) => 1.0); // Atualiza escalas ao mudar a pergunta
+        escalasBotao = List.generate(perguntas[indicePergunta]['opcoes'].length, (index) => 1.0); 
       });
     } else {
-      mostrarResultados(); // Quando o quiz termina, mostra o resultado
+      mostrarResultados(); 
     }
   }
 
   void mostrarResultados() {
-    // Determina o temperamento com maior pontuação
-    String resultado = 'Seu temperamento predominante é:\n';
-    String temperamentoDominante = '';
-
-    int maiorPontuacao = pontuacoes.values.reduce((a, b) => a > b ? a : b);
-
-    if (pontuacoes['sanguineo'] == maiorPontuacao) {
-      temperamentoDominante = 'Sanguíneo';
-    } else if (pontuacoes['fleumatico'] == maiorPontuacao) {
-      temperamentoDominante = 'Fleumático';
-    } else if (pontuacoes['melancolico'] == maiorPontuacao) {
-      temperamentoDominante = 'Melancólico';
-    } else {
-      temperamentoDominante = 'Colérico';
-    }
-
-    resultado += temperamentoDominante;
-
-    // Exibe o resultado final
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text('Resultado'),
-        content: Text(resultado),
-        actions: [
-          TextButton(
-            child: Text('Fechar'),
-            onPressed: () {
-              Navigator.of(ctx).pop();
-            },
-          ),
-          TextButton(
-            child: Text('Reiniciar Quiz'),
-            onPressed: () {
-              setState(() {
-                // Reinicia as variáveis do quiz
-                indicePergunta = 0;
-                pontuacoes = {  // Zera as pontuações
-                  'sanguineo': 0,
-                  'fleumatico': 0,
-                  'melancolico': 0,
-                  'colerico': 0,
-                };
-                escalasBotao = List.generate(perguntas[indicePergunta]['opcoes'].length, (index) => 1.0); // Reseta as escalas
-              });
-              Navigator.of(ctx).pop();
-            },
-          ),
-        ],
+   
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResultadoQuiz(pontuacoes: pontuacoes),
       ),
     );
   }
@@ -192,15 +159,22 @@ class _PaginaQuizState extends State<PaginaQuiz> {
         child: Center(
           child: Column(
             children: [
+              
+              Image.asset(
+                perguntas[indicePergunta]['asset'],
+                width: 200,
+                height: 200,
+                fit: BoxFit.contain, 
+              ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  perguntas[indicePergunta]['texto'],
+                  'Pergunta ${indicePergunta + 1} de ${perguntas.length}\n\n' + perguntas[indicePergunta]['texto'],
                   style: TextStyle(fontSize: 18),
                   textAlign: TextAlign.center,
                 ),
               ),
-              // Gera os botões de resposta
+             
               ...perguntas[indicePergunta]['opcoes'].keys.map((opcao) {
                 int index = perguntas[indicePergunta]['opcoes'].keys.toList().indexOf(opcao);
                 return Padding(
